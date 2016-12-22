@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">GogulSell</string>
+
+    <string name="login_button">Login</string>
+    <string name="create_button">Create Post</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="delete_button">Delete Post</string>
+    <string name="call_button">Contact Seller</string>
+    <string name="title_activity_view_categories">ViewCategories</string>
+
+    <string name="item1_value">Create New Post</string>
+    <string name="item2_value">View My Listings</string>
+    <string name="item3_value">Logout</string>
+
+    <string name="itemName">Item Name: </string>
+    <string name="category">Category</string>
+    <string name="price">Price: </string>
+    <string name="status">Status: </string>
+    <string name="date">Date Posted: </string>
+    <string name="description">Description: </string>
+    <string name="contact">Contact: </string>
+
+    <string name="home">SGD$</string>
+    <string-array name="categories">
+        <item>Clothing</item>
+        <item>Books</item>
+        <item>Electronics</item>
+        <item>Furniture</item>
+    </string-array>
+
+
+</resources>
