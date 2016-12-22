@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class OneItemDetail extends AppCompatActivity
@@ -25,6 +26,7 @@ public class OneItemDetail extends AppCompatActivity
     TextView textViewDescription;
     Button cancelBtn;
     Button callBtn;
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,6 +44,7 @@ public class OneItemDetail extends AppCompatActivity
         textViewDescription = (TextView) findViewById(R.id.textViewDescription);
         cancelBtn = (Button) findViewById(R.id.buttonCancel);
         callBtn =(Button) findViewById(R.id.buttonCall);
+        image= (ImageView) findViewById(R.id.imageView);
 
 
         new AsyncTask<String, Void, Item>() {
@@ -57,6 +60,10 @@ public class OneItemDetail extends AppCompatActivity
                 textViewPrice.setText(i.get("price"));
                 textViewContact.setText(i.get("contact"));
                 textViewDescription.setText(i.get("description"));
+                new CreatePost.DownloadImageTask(image)
+                        .execute("http://res.cloudinary.com/dzujeyavy/image/upload/v1482414489/"+itemId+"%0A.png");
+                new CreatePost.DownloadImageTask(image)
+                        .execute("http://res.cloudinary.com/dzujeyavy/image/upload/v1482414489/"+itemId+".png");
             }
         }.execute(itemId);
 

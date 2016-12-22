@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_create_post"
     android:layout_width="match_parent"
@@ -11,13 +12,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="team7.sa43.gogulsell.CreatePost">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView3"/>
 
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -120,15 +114,37 @@
                 android:layout_weight="0.5"/>
         </TableRow>
         <TableRow
-        android:id="@+id/tableRow6"
+            android:id="@+id/tableRow6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Picture:"
+                android:id="@+id/textViewPicture"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:textAlignment="center" />
+            <ImageView
+                android:id="@+id/imageView"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"/>
+
+
+        </TableRow>
+        <TableRow
+        android:id="@+id/tableRow7"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
             <Button
                 android:text="@string/create_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:id="@+id/buttonCreate"/>
+
             <Button
                 android:text="@string/cancel_button"
                 android:layout_width="wrap_content"
@@ -137,7 +153,7 @@
                 android:id="@+id/buttonCancel"/>
     </TableRow>
         <TableRow
-            android:id="@+id/tableRow7"
+            android:id="@+id/tableRow8"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <Button
@@ -151,4 +167,6 @@
         </TableRow>
 
     </TableLayout>
+
+
 </RelativeLayout>

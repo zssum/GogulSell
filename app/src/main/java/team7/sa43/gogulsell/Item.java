@@ -107,7 +107,7 @@ public class Item extends java.util.HashMap<String, String>
         return item;
     }
 
-    public static void createItem(Item i) {
+    public static String createItem(Item i) {
         JSONObject o= new JSONObject();
         try{
             //o.put("ItemId",i.get("itemId"));
@@ -122,6 +122,7 @@ public class Item extends java.util.HashMap<String, String>
             Log.d("INFO", "json error getFromItem");
         }
         String result = JSONParser.postStream(host+"/Create", o.toString());
+        return result;
     }
 
     public static List<Item> listItemsByUser(String s) {

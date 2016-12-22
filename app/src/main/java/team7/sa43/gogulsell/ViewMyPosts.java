@@ -104,11 +104,13 @@ public class ViewMyPosts extends ListActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
-            Intent refresh = new Intent(this, ViewMyPosts.class);
-            startActivity(refresh);
-            this.finish();
-        }
+            if (resultCode == RESULT_OK) {
+
+                Intent refresh = new Intent(this, ViewMyPosts.class);
+                refresh.putExtra("userId", userId);
+                startActivity(refresh);
+                this.finish();
+            }
     }
 
 }
