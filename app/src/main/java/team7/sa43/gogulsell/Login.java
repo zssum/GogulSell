@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity
 {
@@ -28,10 +29,16 @@ public class Login extends AppCompatActivity
            @Override
            public void onClick(View view)
            {
-               userId = editText.getText().toString();
-               intent = new Intent(getApplicationContext(), ViewCategories.class);
-               intent.putExtra("userId",userId);
-               startActivity(intent);
+               if(editText.getText().toString().length()<1){
+                   Toast.makeText(Login.this,"Please input a valid UserId",Toast.LENGTH_SHORT).show();
+               }
+               else{
+                   userId = editText.getText().toString();
+                   intent = new Intent(getApplicationContext(), ViewCategories.class);
+                   intent.putExtra("userId",userId);
+                   startActivity(intent);
+               }
+
            }
         });
 
