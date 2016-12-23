@@ -16,7 +16,7 @@ import java.util.List;
 public class Item extends java.util.HashMap<String, String>
 {
 
-    final static String host = "http://192.168.1.11/sth/Service.svc";
+    final static String host = "http://10.10.24.150/sth/Service.svc";
 
     public Item(String itemId, String userId, String itemName, String category, String price, String status, String description, String contact)
     {

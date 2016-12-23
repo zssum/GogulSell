@@ -3,10 +3,10 @@ package team7.sa43.gogulsell;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -41,6 +41,19 @@ public class MyAdapter extends ArrayAdapter<Item>
             TextView e2 = (TextView) v.findViewById(R.id.textView2);
 
             e2.setText("\n\t\t\t" + i.get("itemName") + " - " + "$" + i.get("price") + "\n");
+
+            String itemId= i.get("itemId");
+
+            TextView e3=(TextView) v.findViewById(R.id.textView3);
+
+            e3.setText("Seller: "+ i.get("userId"));
+
+            ImageView image =(ImageView) v.findViewById(R.id.imageView2);
+
+            new CreatePost.DownloadImageTask(image)
+                    .execute("http://res.cloudinary.com/dzujeyavy/image/upload/v1482414489/"+itemId+"%0A.png");
+            new CreatePost.DownloadImageTask(image)
+                    .execute("http://res.cloudinary.com/dzujeyavy/image/upload/v1482414489/"+itemId+".png");
             //TODO: Tidy up layout
 
             //ImageView image = (ImageView) v.findViewById(R.id.imageView2);
