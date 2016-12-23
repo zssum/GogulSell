@@ -98,28 +98,30 @@ public class CreatePost extends AppCompatActivity
                 public void onClick(View view)
                 {
                     //Item i = new Item("1", );
+                    if(validationCheckPass()){
+                        Item i1 = new Item("1", userId, itemName.getText().toString(), category.getSelectedItem().toString(),
+                                price.getText().toString(), "Available", description.getText().toString(), contact.getText().toString());
 
-                    Item i1 = new Item("1", userId, itemName.getText().toString(), category.getSelectedItem().toString(),
-                            price.getText().toString(), "Available", description.getText().toString(), contact.getText().toString());
-
-                    new AsyncTask<Item, Void, String>() {
-                        @Override
-                        protected String doInBackground(Item... params) {
-                            Log.d("DEBUG CREATE", params.toString());
-                            return Item.createItem(params[0]);
+                        new AsyncTask<Item, Void, String>() {
+                            @Override
+                            protected String doInBackground(Item... params) {
+                                Log.d("DEBUG CREATE", params.toString());
+                                return Item.createItem(params[0]);
 
 
-                        }
-                        @Override
-                        protected void onPostExecute(String result) {
-                            Log.d("INFO","oncreate result id is"+result);
-                            Toast.makeText(getApplicationContext(), "Item listing created!", Toast.LENGTH_LONG).show();
-                            if(bs!=null){
-                                new CloudinaryUpload().execute(result);
                             }
-                            finish();
-                        }
-                    }.execute(i1);
+                            @Override
+                            protected void onPostExecute(String result) {
+                                Log.d("INFO","oncreate result id is"+result);
+                                Toast.makeText(getApplicationContext(), "Item listing created!", Toast.LENGTH_LONG).show();
+                                if(bs!=null){
+                                    new CloudinaryUpload().execute(result);
+                                }
+                                finish();
+                            }
+                        }.execute(i1);
+                    }
+
                 }
             });
 
@@ -163,28 +165,31 @@ public class CreatePost extends AppCompatActivity
                 @Override
                 public void onClick(View view)
                 {
-                    i.put("itemName", itemName.getText().toString());
-                    i.put("category", category.getSelectedItem().toString());
-                    i.put("price", price.getText().toString());
-                    i.put("contact", contact.getText().toString());
-                    i.put("description", description.getText().toString());
-                    Log.d("Test update obj", i.toString());
-                    //TODO: Insert UPDATE METHOD here
+                    if(validationCheckPass()){
+                        i.put("itemName", itemName.getText().toString());
+                        i.put("category", category.getSelectedItem().toString());
+                        i.put("price", price.getText().toString());
+                        i.put("contact", contact.getText().toString());
+                        i.put("description", description.getText().toString());
+                        Log.d("Test update obj", i.toString());
+                        //TODO: Insert UPDATE METHOD here
 
-                    new AsyncTask<Item, Void, Void>() {
-                        @Override
-                        protected Void doInBackground(Item... params) {
-                            Log.d("DEBUG CREATE", params.toString());
-                             Item.updateItem(params[0]);
-                            return null;
-                        }
-                        @Override
-                        protected void onPostExecute(Void result) {
-                            if(bs!=null) new CloudinaryUpload().execute(itemId);
-                            setResult(RESULT_OK, null);
-                            finish();
-                        }
-                    }.execute(i);
+                        new AsyncTask<Item, Void, Void>() {
+                            @Override
+                            protected Void doInBackground(Item... params) {
+                                Log.d("DEBUG CREATE", params.toString());
+                                Item.updateItem(params[0]);
+                                return null;
+                            }
+                            @Override
+                            protected void onPostExecute(Void result) {
+                                if(bs!=null) new CloudinaryUpload().execute(itemId);
+                                setResult(RESULT_OK, null);
+                                finish();
+                            }
+                        }.execute(i);
+                    }
+
 
 
                 }
@@ -324,5 +329,22 @@ public class CreatePost extends AppCompatActivity
             }
             return null;
         }
+    }
+
+    private boolean validationCheckPass(){
+        if(itemName.getText().toString().length()<1||price.getText().toString().length()<1||
+                contact.getText().toString().length()<1||description.getText().toString().length()<1){
+            Toast.makeText(CreatePost.this,"Please ensure there are no empty fields",Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            try {
+                Integer.parseInt( contact.getText().toString());
+                Double.parseDouble(price.getText().toString());
+            } catch (NumberFormatException e) {
+                Toast.makeText(CreatePost.this,"Please Price and Phone Numbers are correct",Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        return true;
     }
 }

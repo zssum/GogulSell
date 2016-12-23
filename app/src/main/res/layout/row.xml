@@ -13,7 +13,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="17dp"
         android:layout_marginTop="15dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text="TextView"
@@ -23,7 +24,8 @@
         android:layout_marginTop="12dp"
         android:id="@+id/textView3"
         android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignStart="@+id/textView2"
+        android:textColor="@android:color/black" />
 
     <ImageView
         android:layout_width="wrap_content"
